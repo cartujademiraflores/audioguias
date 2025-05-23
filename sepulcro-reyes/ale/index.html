@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Königsgrab</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f0e3cd;
+      color: #4b3b28;
+      margin: 0;
+      padding: 5vw;
+      text-align: center;
+    }
+    h1 {
+      font-size: 8vw;
+      margin-bottom: 5vw;
+    }
+    audio {
+      width: 100%;
+      height: 3rem;
+    }
+    .buttons {
+      margin-top: 10vw;
+    }
+    .lang-button {
+      background-color: #4b3b28;
+      color: #f0e3cd;
+      padding: 3vw 5vw;
+      margin: 2vw;
+      font-size: 5vw;
+      border: none;
+      border-radius: 1vw;
+      cursor: pointer;
+    }
+    .lang-button img {
+      vertical-align: middle;
+      height: 5vw;
+      margin-right: 2vw;
+    }
+  </style>
+</head>
+<body>
+  <h1>Königsgrab</h1>
+  <audio controls>
+    <source src="sepulcro-reyes-ale.mp3" type="audio/mpeg">
+    Ihr Browser unterstützt das Audioelement nicht.
+  </audio>
+
+  <div class="buttons">
+    <button class="lang-button" onclick="window.location.href='../esp/'">
+      <img src="https://flagcdn.com/es.svg" alt="ES Flag"> Español
+    </button>
+    <button class="lang-button" onclick="window.location.href='../eng/'">
+      <img src="https://flagcdn.com/gb.svg" alt="UK Flag"> English
+    </button>
+    <button class="lang-button" onclick="window.location.href='../fra/'">
+      <img src="https://flagcdn.com/fr.svg" alt="FR Flag"> French
+    </button>
+    <button class="lang-button" onclick="window.location.href='../ale/'">
+      <img src="https://flagcdn.com/de.svg" alt="DE Flag"> German
+    </button>
+    <button class="lang-button" onclick="window.location.href='../ita/'">
+      <img src="https://flagcdn.com/it.svg" alt="IT Flag"> Italiano
+    </button>
+  </div>
+</body>
+</html>
