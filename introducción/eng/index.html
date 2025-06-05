@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Introducción</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 2vh 4vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    h1 {
+      font-size: 6vw;
+      text-align: center;
+    }
+    audio {
+      width: 90%;
+      margin: 3vh 0;
+    }
+    .lang-buttons {
+      display: flex;
+      gap: 1vw;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .lang-buttons a {
+      text-decoration: none;
+      background-color: #800014;
+      color: white;
+      padding: 1vh 2vw;
+      border-radius: 5px;
+      font-size: 4vw;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <h1>Introducción</h1>
+  <audio controls>
+    <source src="introduccion-eng.mp3" type="audio/mpeg">
+    Tu navegador no soporta el elemento de audio.
+  </audio>
+  <div class="lang-buttons">
+    <a href="../esp/index.html">🇪🇸 Español</a>
+    <a href="../eng/index.html">🇬🇧 English</a>
+    <a href="../fra/index.html">🇫🇷 Français</a>
+    <a href="../ale/index.html">🇩🇪 Deutsch</a>
+    <a href="../ita/index.html">🇮🇹 Italiano</a>
+  </div>
+</body>
+</html>
