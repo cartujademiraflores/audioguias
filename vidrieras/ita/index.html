@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vidrieras Flamencas - Slider</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f0e3cd;
+      color: #4b3b28;
+      margin: 0;
+      padding: 5vw;
+      text-align: center;
+    }
+    h1 {
+      text-align: center;
+      font-size: 6vw;
+    }
+    audio {
+      width: 100%;
+      margin: 2vh 0;
+    }
+    .slider-container {
+      overflow-x: auto;
+      white-space: nowrap;
+      scroll-snap-type: x mandatory;
+    }
+    .slide {
+      display: inline-block;
+      scroll-snap-align: center;
+      width: 90%;
+      max-width: 400px;
+      margin: 2vh auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+      padding: 1em;
+    }
+    .slide img {
+      width: 100%;
+      border-radius: 8px;
+    }
+    .slide button {
+      margin-top: 1em;
+      background-color: #800014;
+      color: white;
+      padding: 0.5em 1em;
+      border: none;
+      border-radius: 5px;
+      font-size: 4vw;
+    }
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+    }
+    .modal-content {
+      background: white;
+      margin: 10% auto;
+      padding: 2em;
+      width: 90%;
+      max-width: 500px;
+      border-radius: 10px;
+      position: relative;
+    }
+    .close {
+      position: absolute;
+      right: 1em;
+      top: 1em;
+      font-size: 1.5em;
+      cursor: pointer;
+      color: #800014;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Vidrieras Flamencas</h1>
+<audio controls>
+  <source src="vidrieras.mp3" type="audio/mpeg">
+  Tu navegador no soporta audio.
+</audio>
+
+<div class="slider-container">
+  <div class="slide">
+    <img src="lado-norte/vidriera1.jpg" alt="Vidriera 1">
+    <button onclick="openModal(1)">+ Más información</button>
+  </div>
+  <div class="slide">
+    <img src="lado-norte/vidriera2.jpg" alt="Vidriera 2">
+    <button onclick="openModal(2)">+ Más información</button>
+  </div>
+  <div class="slide">
+    <img src="lado-norte/vidriera3.jpg" alt="Vidriera 3">
+    <button onclick="openModal(3)">+ Más información</button>
+  </div>
+</div>
+
+<!-- Modales -->
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal(1)">&times;</span>
+    <h2>Vidriera 1: La Anunciación</h2>
+    <p>Representación de la Anunciación. Taller flamenco, circa 1480.</p>
+  </div>
+</div>
+
+<div id="modal2" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal(2)">&times;</span>
+    <h2>Vidriera 2: La Visitación</h2>
+    <p>Escena de la Visitación con ricos detalles florales y ropajes góticos.</p>
+  </div>
+</div>
+
+<div id="modal3" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal(3)">&times;</span>
+    <h2>Vidriera 3: La Natividad</h2>
+    <p>Detalle de la Natividad con ángeles músicos. Taller flamenco.</p>
+  </div>
+</div>
+
+<script>
+  function openModal(id) {
+    document.getElementById('modal' + id).style.display = 'block';
+  }
+  function closeModal(id) {
+    document.getElementById('modal' + id).style.display = 'none';
+  }
+</script>
+
+</body>
+</html>
