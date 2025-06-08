@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vidrieras Flamencas</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 2vh 4vw;
+      background: #f0e3cd;
+    }
+    h1 {
+      text-align: center;
+      font-size: 6vw;
+    }
+    audio {
+      width: 100%;
+      margin: 2vh 0;
+    }
+    .section-header {
+      background-color: #80001300;
+      color: rgb(0, 0, 0);
+      text-align: center;
+      padding: 1em;
+      font-size: 5vw;
+      font-weight: bold;
+      margin-top: 2vh;
+    }
+    .toggle-btn {
+      display: block;
+      margin: 1vh auto;
+      background-color: #800014;
+      color: white;
+      border: none;
+      padding: 0.6em 1.2em;
+      font-size: 4vw;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .slider-container {
+      display: none;
+      overflow-x: auto;
+      white-space: nowrap;
+      scroll-snap-type: x mandatory;
+      margin-top: 2vh;
+    }
+    .slider-container::-webkit-scrollbar { display: none; }
+    .slider-container { -ms-overflow-style: none; scrollbar-width: none; }
+
+    .slide {
+      display: inline-block;
+      scroll-snap-align: center;
+      width: 90%;
+      max-width: 400px;
+      margin: 2vh auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+      padding: 1em;
+    }
+    .slide-title {
+      font-size: 4.5vw;
+      color: #000;
+      margin-bottom: 0.5em;
+      text-align: center;
+    }
+    .slide img {
+      width: 100%;
+      border-radius: 8px;
+    }
+    .slide button {
+      display: block;
+      margin: 1em auto 0;
+      background-color: #800014;
+      color: white;
+      padding: 0.5em 1em;
+      border: none;
+      border-radius: 5px;
+      font-size: 4vw;
+      cursor: pointer;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+    }
+    .modal-content {
+      background: white;
+      margin: 10% auto;
+      padding: 2em;
+      width: 90%;
+      max-width: 500px;
+      border-radius: 10px;
+      position: relative;
+    }
+    .close {
+      position: absolute;
+      right: 1em;
+      top: 1em;
+      font-size: 1.5em;
+      cursor: pointer;
+      color: #800014;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Vidrieras Flamencas</h1>
+  <audio controls>
+    <source src="vidrieras.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio.
+  </audio>
+
+  <!-- LADO NORTE -->
+  <div class="section-header">VIDRIERAS: LADO NORTE</div>
+  <button class="toggle-btn" onclick="toggleSlider('norte')">VER VIDRIERAS</button>
+  <div id="slider-norte" class="slider-container">
+    <div class="slide">
+      <div class="slide-title">La crucifixión</div>
+      <img src="lado-norte/crucifixion.jpg" alt="Vidriera 1">
+      <button onclick="openModal(1)">+ Más información</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">El Camino del Calvario</div>
+      <img src="lado-norte/camino-calvario.jpg" alt="Vidriera 2">
+      <button onclick="openModal(2)">+ Más información</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">Coronación de Espinas</div>
+      <img src="lado-norte/coronacion-espinas.jpg" alt="Vidriera 3">
+      <button onclick="openModal(3)">+ Más información</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">La flagelación</div>
+      <img src="lado-norte/flagelacion.jpg" alt="Vidriera 4">
+      <button onclick="openModal(4)">+ Más información</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">La oración en el huerto</div>
+      <img src="lado-norte/oracion-huerto.jpg" alt="Vidriera 5">
+      <button onclick="openModal(5)">+ Más información</button>
+    </div>
+  </div>
+
+  <!-- LADO SUR -->
+  <div class="section-header">VIDRIERAS: LADO SUR</div>
+  <button class="toggle-btn" onclick="toggleSlider('sur')">VER VIDRIERAS</button>
+  <div id="slider-sur" class="slider-container">
+    <div class="slide">
+      <div class="slide-title">Descendimiento de Cristo</div>
+      <img src="lado-sur/descendimiento.jpg" alt="Vidriera 6">
+      <button onclick="openModal(6)">+ Más información</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">La Resurrección del Señor</div>
+      <img src="lado-sur/resurreccion.jpg" alt="Vidriera 7">
+      <button onclick="openModal(7)">+ Más información</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">La Ascensión del Señor</div>
+      <img src="lado-sur/ascension.jpg" alt="Vidriera 8">
+      <button onclick="openModal(8)">+ Más información</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">Pentecostés</div>
+      <img src="lado-sur/penstecostes.jpg" alt="Vidriera 9">
+      <button onclick="openModal(9)">+ Más información</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">El Juicio Final</div>
+      <img src="lado-sur/juicio-final.jpg" alt="Vidriera 10">
+      <button onclick="openModal(10)">+ Más información</button>
+    </div>
+  </div>
+
+  <!-- ÁBSIDE -->
+  <div class="section-header">VIDRIERAS: ÁBSIDE</div>
+  <button class="toggle-btn" onclick="toggleSlider('abside')">VER VIDRIERAS</button>
+  <div id="slider-abside" class="slider-container">
+    <div class="slide">
+      <div class="slide-title">La Coronación de la Virgen</div>
+      <img src="abside/coronacion-virgen.jpg" alt="Vidriera 11">
+      <button onclick="openModal(11)">+ Más información</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">La Adoración de los Magos</div>
+      <img src="abside/adoracion-magos.jpg" alt="Vidriera 12">
+      <button onclick="openModal(12)">+ Más información</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">La Presentación en el Templo</div>
+      <img src="abside/presentacion-templo.jpg" alt="Vidriera 13">
+      <button onclick="openModal(13)">+ Más información</button>
+    </div>
+  </div>
+
+  <!-- MODALES LADO NORTE -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(1)">&times;</span>
+      <h2>La crucifixión</h2>
+      <p>La cruz con Cristo muerto ocupa el centro de la vidriera, situándose a ambos lados el buen y el mal ladrón en sendas cruces. Sobre la Cruz, la paloma del Espíritu Santo confirma que era el Hijo de Dios. En la parte inferior y abrazada al madero la figura de la Magdalena, en pleno llanto. En el lateral izquierdo la Virgen María es consolada por Juan, el discípulo amado de Jesús. Detrás de ellos y ataviado con túnica amarilla, Longinos, el Centurión a punto de traspasar el costado de Cristo. En el lateral derecho José de Arimatea y Nicodemo, junto a Pilato que explica el letrero que colocó sobre la cruz, “Jesús el Nazareno, Rey de los Judíos”. La calavera que aparece en la vidriera inferior central es característica de la imagen de la Crucifixión y del Descendimiento, simboliza tanto el monte Gólgota («calavera» en hebreo) como los huesos de Adán, primer hombre, muerto por el Pecado Original que es redimido en ese momento por el sacrificio de Cristo.</p>
+    </div>
+  </div>
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(2)">&times;</span>
+      <h2>El Camino del Calvario</h2>
+      <p>Cristo portando la cruz a cuestas con la túnica azul ocupa el panel central de la vidriera. Detrás de él y en el panel izquierdo le acompaña la turba en el camino hacia el Calvario. En el lado derecho, la Virgen María, Juan y María Magdalena siguen a Jesús en sus últimos pasos, junto con Verónica que sostiene la Santa Faz, el paño con el que secó el sudor de Jesús y en el que se quedó imprimado su rostro. En el cuadrante superior derecho se muestra la escena inmediatamente posterior, cuando después de despojarlo de su túnica le clavan en la cruz antes de alzarlo.</p>
+    </div>
+  </div>
+  <div id="modal3" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(3)">&times;</span>
+      <h2>Coronación de Espinas</h2>
+      <p>Según relatan los Evangelios, tras la flagelación le quitaron las ropas a Cristo y le pusieron un manto color púrpura, y trenzando una corona de espinas se la pusieron burlándose de él mientras gritaban “Salve, Rey de los Judíos” (Jn. 19, 2). Este es el tema central de la escena representada, en la que vemos las lancetas de los soldados hundiendo la corona sobre la cabeza de Cristo. Dos escenas secundarias pueden parecer desapercibidas en la parte superior: a la izquierda el Ecce Homo (la presentación de Jesús ante el pueblo); a la derecha Pilato acompañado de su mujer, quien le confiesa los sueños que ha tenido donde Jesús se le revelaba como inocente.</p>
+    </div>
+  </div>
+  <div id="modal4" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(4)">&times;</span>
+      <h2>La flagelación</h2>
+      <p>La escena que da nombre a la vidriera es la representada en el primer plano. Jesús aparece situado en el vano central con las manos en la espalda y atado a la columna, mientras es azotado por dos hombres con látigos. Delante y a la derecha, la figura de Poncio Pilato, en cuya casa se desarrolla la flagelación, y un personaje vestido de rojo que se ha identificado por algunos como Herodes. Otra escena se encierra en el plano superior central, oculta por la columna de la flagelación: la comparecencia de Jesús ante Pilato, que cronológicamente se desarrolla antes que esta.</p>
+    </div>
+  </div>
+  <div id="modal5" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(5)">&times;</span>
+      <h2>La oración en el huerto</h2>
+      <p>A pesar del título, en la vidriera se desarrollan dos escenas sucesivas. La primera, la oración de Cristo en el Huerto de los Olivos, que ocupa el espacio central e inferior de la vidriera. Jesús reza de rodillas en el plano central de la vidriera sabiendo que ha de beber el cáliz de la pasión (representado en la parte superior); mientras, los discípulos más allegados que acompañaban a Jesús (Pedro, Santiago y Juan) caen en sueño. La segunda escena sucede a la primera y representa el beso de Judas cuando éste entrega a Jesús a los judíos, que puede contemplarse en el marco superior izquierdo.</p>
+    </div>
+  </div>
+
+  <!-- MODALES LADO SUR -->
+  <div id="modal6" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(6)">&times;</span>
+      <h2>Descendimiento de Cristo</h2>
+      <p>Cristo muerto es desclavado de la Cruz y entregado a su madre, la Virgen. En la vidriera se aprecia la combinación de la escena del Descendimiento con la colocación en el sepulcro. María Magdalena con María la de Cleofás llevan los aceites y aromas para embalsamar el cuerpo, mientras que Nicodemo y José de Arimatea ayudan en el proceso de mover el cuerpo de Jesús, flanqueados por San Juan. La compasión de la Virgen y las miradas de los rostros hacen patente el ideal de la imagen del mundo flamenco.</p>
+    </div>
+  </div>
+  <div id="modal7" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(7)">&times;</span>
+      <h2>La Resurrección del Señor</h2>
+      <p>Cristo Resucitado se aparece de pie sobre la tapa del sepulcro que cubría su cuerpo. Su manto rojo y la cruz estandarte que porta en la mano simbolizan su victoria sobre la muerte. A los lados de la escena duermen los cuatro guardianes que custodiaban el sepulcro, mientras que en el lateral superior derecho las tres Marías acuden a visitar el sepulcro y comprueban que Cristo ha resucitado.</p>
+    </div>
+  </div>
+  <div id="modal8" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(8)">&times;</span>
+      <h2>La Ascensión del Señor</h2>
+      <p>La vidriera representa la escena narrada por los Evangelios, donde después de aparecerse Jesús a sus discípulos en repetidas ocasiones, les bendijo y subió al cielo. Solamente podemos ver los pies de Cristo, en plena ascensión, y sus huellas todavía adheridas a la roca de la que se eleva. En la parte inferior la Virgen con los discípulos que contemplan la escena admirados y con actitud orante. Se identifica a San Pedro en el lado derecho por ser el más anciano, y a San Juan en el panel izquierdo, como el más joven.</p>
+    </div>
+  </div>
+  <div id="modal9" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(9)">&times;</span>
+      <h2>Pentecostés</h2>
+      <p>después de la Ascensión, Cristo entregó a sus discípulos el Espíritu Santo que acudió a ellos en forma de paloma que hizo descender sus dones sobre ellos en forma de rayos de fuego. La Virgen María, en el centro del grupo, está representada como madre de los discípulos con actitud orante y con un libro en su regazo. El apóstol Juan se identifica por la cartela en el borde del manto del personaje joven del lado derecho. A su vez, todos los discípulos poseen nimbos en sus cabezas en señal de santidad.</p>
+    </div>
+  </div>
+  <div id="modal10" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(10)">&times;</span>
+      <h2>El Juicio Final</h2>
+      <p>La última escena recogida en las vidrieras es la narrada en el Apocalipsis de San Juan. El Hijo del Hombre se manifiesta entre las nubes con gran poder y gloria como narra el Nuevo Testamento, sentado y dispuesto a juzgar con la mano derecha levantada. San Juan Bautista y la Virgen María acompañan a Cristo, de rodillas y en actitud orante por el género humano conformando la iconografía de la Deesis (gr. «plegaria»). Un grupo de ángeles tocan las trompetas resucitando a los muertos que resurgen juntos de sus tumbas como mortajas.</p>
+    </div>
+  </div>
+
+  <!-- MODALES ÁBSIDE -->
+  <div id="modal11" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(11)">&times;</span>
+      <h2>La Coronación de la Virgen</h2>
+      <p>María aparece siendo coronada por la Santísima Trinidad: a la izquierda Dios Hijo (Cristo, con la corona de espinas y el torso descubierto) y a la derecha Dios Padre (con barba y manto rojo, sosteniendo la esfera del mundo). Los ángeles la sostienen en el aire, generado la impresión de ascensionalidad en lo que puede ser un precedente iconográfico de la Asunción de la Virgen María a los cielos, dogma proclamado en 1950.</p>
+    </div>
+  </div>
+  <div id="modal12" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(12)">&times;</span>
+      <h2>La Adoración de los Magos</h2>
+      <p>Tras el nacimiento de Jesús, unos magos de oriente acudieron a adorarle (Mt. 2, 1-12). En el centro de la escena se encuentra la Virgen con el Niño en sus brazos inscrita en el pesebre. Los ángeles sostienen una filacteria decorativa, mientras que la presencia de la mula y el buey acompañan el despliegue temático de la Natividad.</p>
+    </div>
+  </div>
+  <div id="modal13" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(13)">&times;</span>
+      <h2>La Presentación en el Templo</h2>
+      <p>Siguiendo el relato de Lc. 2, 22-40 la Virgen presenta en el templo a su hijo Jesús, que observa sentado al sacerdote Simeón. Tras ellos, San José en el centro portando tres pichones enjaulados como ofrenda. El detallismo de la figuración flamenca se observa en detalles como el perro del panel inferior, conectando la escena con la vida cotidiana, y la decoración litúrgica del templo del panel superior.</p>
+    </div>
+  </div>
+
+  <script>
+    function toggleSlider(id) {
+      const slider = document.getElementById("slider-" + id);
+      const btn = event.target;
+      if (slider.style.display === "block") {
+        slider.style.display = "none";
+        btn.textContent = "VER VIDRIERAS";
+      } else {
+        slider.style.display = "block";
+        btn.textContent = "OCULTAR";
+      }
+    }
+    function openModal(id) {
+      document.getElementById("modal" + id).style.display = "block";
+    }
+    function closeModal(id) {
+      document.getElementById("modal" + id).style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
