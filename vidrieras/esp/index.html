@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vidrieras Flamencas</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 2vh 4vw;
+      background: #f0e3cd;
+    }
+    h1 {
+      text-align: center;
+      font-size: 6vw;
+    }
+    audio {
+      width: 100%;
+      margin: 2vh 0;
+    }
+    .section-header {
+      background-color: #80001300;
+      color: rgb(0, 0, 0);
+      text-align: center;
+      padding: 1em;
+      font-size: 5vw;
+      font-weight: bold;
+      margin-top: 2vh;
+    }
+    .toggle-btn {
+      display: block;
+      margin: 1vh auto;
+      background-color: #800014;
+      color: white;
+      border: none;
+      padding: 0.6em 1.2em;
+      font-size: 4vw;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .slider-container {
+      display: none;
+      overflow-x: auto;
+      white-space: nowrap;
+      scroll-snap-type: x mandatory;
+      margin-top: 2vh;
+    }
+    .slider-container::-webkit-scrollbar { display: none; }
+    .slider-container { -ms-overflow-style: none; scrollbar-width: none; }
+
+    .slide {
+      display: inline-block;
+      scroll-snap-align: center;
+      width: 90%;
+      max-width: 400px;
+      margin: 2vh auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+      padding: 1em;
+    }
+    .slide-title {
+      font-size: 4.5vw;
+      color: #000;
+      margin-bottom: 0.5em;
+      text-align: center;
+    }
+    .slide img {
+      width: 100%;
+      border-radius: 8px;
+    }
+    .slide button {
+      display: block;
+      margin: 1em auto 0;
+      background-color: #800014;
+      color: white;
+      padding: 0.5em 1em;
+      border: none;
+      border-radius: 5px;
+      font-size: 4vw;
+      cursor: pointer;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+    }
+    .modal-content {
+      background: white;
+      margin: 10% auto;
+      padding: 2em;
+      width: 90%;
+      max-width: 500px;
+      border-radius: 10px;
+      position: relative;
+    }
+    .close {
+      position: absolute;
+      right: 1em;
+      top: 1em;
+      font-size: 1.5em;
+      cursor: pointer;
+      color: #800014;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Vidrieras Flamencas</h1>
+  <audio controls>
+    <source src="vidrieras.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio.
+  </audio>
+
+  <!-- LADO NORTE -->
+  <div class="section-header">VIDRIERAS: LADO NORTE</div>
+  <button class="toggle-btn" onclick="toggleSlider('norte')">VER VIDRIERAS</button>
+  <div id="slider-norte" class="slider-container">
+    <div class="slide">
+      <div class="slide-title">La crucifixión</div>
+      <img src="lado-norte/crucifixion.jpg" alt="Vidriera 1">
+      <button onclick="openModal(1)">+ Más información</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">El Camino del Calvario</div>
+      <img src="lado-norte/camino-calvario.jpg" alt="Vidriera 2">
+      <button onclick="openModal(2)">+ Más información</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">Coronación de Espinas</div>
+      <img src="lado-norte/coronacion-espinas.jpg" alt="Vidriera 3">
+      <button onclick="openModal(3)">+ Más información</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">La flagelación</div>
+      <img src="lado-norte/flagelacion.jpg" alt="Vidriera 4">
+      <button onclick="openModal(4)">+ Más información</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">La oración en el huerto</div>
+      <img src="lado-norte/oracion-huerto.jpg" alt="Vidriera 5">
+      <button onclick="openModal(5)">+ Más información</button>
+    </div>
+  </div>
+
+  <!-- LADO SUR -->
+  <div class="section-header">VIDRIERAS: LADO SUR</div>
+  <button class="toggle-btn" onclick="toggleSlider('sur')">VER VIDRIERAS</button>
+  <div id="slider-sur" class="slider-container">
+    <div class="slide">
+      <div class="slide-title">Descendimiento de Cristo</div>
+      <img src="lado-sur/descendimiento.jpg" alt="Vidriera 6">
+      <button onclick="openModal(6)">+ Más información</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">La Resurrección del Señor</div>
+      <img src="lado-sur/resurreccion.jpg" alt="Vidriera 7">
+      <button onclick="openModal(7)">+ Más información</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">La Ascensión del Señor</div>
+      <img src="lado-sur/ascension.jpg" alt="Vidriera 8">
+      <button onclick="openModal(8)">+ Más información</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">Pentecostés</div>
+      <img src="lado-sur/penstecostes.jpg" alt="Vidriera 9">
+      <button onclick="openModal(9)">+ Más información</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">El Juicio Final</div>
+      <img src="lado-sur/juicio-final.jpg" alt="Vidriera 10">
+      <button onclick="openModal(10)">+ Más información</button>
+    </div>
+  </div>
+
+  <!-- ÁBSIDE -->
+  <div class="section-header">VIDRIERAS: ÁBSIDE</div>
+  <button class="toggle-btn" onclick="toggleSlider('abside')">VER VIDRIERAS</button>
+  <div id="slider-abside" class="slider-container">
+    <div class="slide">
+      <div class="slide-title">La Coronación de la Virgen</div>
+      <img src="abside/coronacion-virgen.jpg" alt="Vidriera 11">
+      <button onclick="openModal(11)">+ Más información</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">La Adoración de los Magos</div>
+      <img src="abside/adoracion-magos.jpg" alt="Vidriera 12">
+      <button onclick="openModal(12)">+ Más información</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">La Presentación en el Templo</div>
+      <img src="abside/presentacion-templo.jpg" alt="Vidriera 13">
+      <button onclick="openModal(13)">+ Más información</button>
+    </div>
+  </div>
+
+  <!-- MODALES LADO NORTE -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(1)">&times;</span>
+      <h2>La crucifixión</h2>
+      <p>La cruz con Cristo muerto ocupa el centro de la vidriera…</p>
+    </div>
+  </div>
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(2)">&times;</span>
+      <h2>El Camino del Calvario</h2>
+      <p>Cristo portando la cruz a cuestas…</p>
+    </div>
+  </div>
+  <div id="modal3" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(3)">&times;</span>
+      <h2>Coronación de Espinas</h2>
+      <p>Según relatan los Evangelios…</p>
+    </div>
+  </div>
+  <div id="modal4" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(4)">&times;</span>
+      <h2>La flagelación</h2>
+      <p>La escena que da nombre a la vidriera…</p>
+    </div>
+  </div>
+  <div id="modal5" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(5)">&times;</span>
+      <h2>La oración en el huerto</h2>
+      <p>A pesar del título…</p>
+    </div>
+  </div>
+
+  <!-- MODALES LADO SUR -->
+  <div id="modal6" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(6)">&times;</span>
+      <h2>Descendimiento de Cristo</h2>
+      <p>Cristo muerto es desclavado…</p>
+    </div>
+  </div>
+  <div id="modal7" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(7)">&times;</span>
+      <h2>La Resurrección del Señor</h2>
+      <p>Cristo Resucitado se aparece…</p>
+    </div>
+  </div>
+  <div id="modal8" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(8)">&times;</span>
+      <h2>La Ascensión del Señor</h2>
+      <p>La vidriera representa la escena…</p>
+    </div>
+  </div>
+  <div id="modal9" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(9)">&times;</span>
+      <h2>Pentecostés</h2>
+      <p>Después de la Ascensión…</p>
+    </div>
+  </div>
+  <div id="modal10" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(10)">&times;</span>
+      <h2>El Juicio Final</h2>
+      <p>La última escena recogida…</p>
+    </div>
+  </div>
+
+  <!-- MODALES ÁBSIDE -->
+  <div id="modal11" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(11)">&times;</span>
+      <h2>La Coronación de la Virgen</h2>
+      <p>María aparece siendo coronada…</p>
+    </div>
+  </div>
+  <div id="modal12" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(12)">&times;</span>
+      <h2>La Adoración de los Magos</h2>
+      <p>Tras el nacimiento de Jesús…</p>
+    </div>
+  </div>
+  <div id="modal13" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(13)">&times;</span>
+      <h2>La Presentación en el Templo</h2>
+      <p>Siguiendo el relato de Lc. 2…</p>
+    </div>
+  </div>
+
+  <script>
+    function toggleSlider(id) {
+      const slider = document.getElementById("slider-" + id);
+      const btn = event.target;
+      if (slider.style.display === "block") {
+        slider.style.display = "none";
+        btn.textContent = "VER VIDRIERAS";
+      } else {
+        slider.style.display = "block";
+        btn.textContent = "OCULTAR";
+      }
+    }
+    function openModal(id) {
+      document.getElementById("modal" + id).style.display = "block";
+    }
+    function closeModal(id) {
+      document.getElementById("modal" + id).style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
