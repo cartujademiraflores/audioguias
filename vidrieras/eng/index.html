@@ -1,18 +1,15 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Vidrieras Flamencas - Slider</title>
+  <title>Flemish stained-glass windows</title>
   <style>
     body {
       font-family: sans-serif;
-      background-color: #f0e3cd;
-      color: #4b3b28;
       margin: 0;
-      padding: 5vw;
-      text-align: center;
+      padding: 2vh 4vw;
+      background: #f0e3cd;
     }
     h1 {
       text-align: center;
@@ -22,11 +19,36 @@
       width: 100%;
       margin: 2vh 0;
     }
+    .section-header {
+      background-color: #80001300;
+      color: rgb(0, 0, 0);
+      text-align: center;
+      padding: 1em;
+      font-size: 5vw;
+      font-weight: bold;
+      margin-top: 2vh;
+    }
+    .toggle-btn {
+      display: block;
+      margin: 1vh auto;
+      background-color: #800014;
+      color: white;
+      border: none;
+      padding: 0.6em 1.2em;
+      font-size: 4vw;
+      border-radius: 5px;
+      cursor: pointer;
+    }
     .slider-container {
+      display: none;
       overflow-x: auto;
       white-space: nowrap;
       scroll-snap-type: x mandatory;
+      margin-top: 2vh;
     }
+    .slider-container::-webkit-scrollbar { display: none; }
+    .slider-container { -ms-overflow-style: none; scrollbar-width: none; }
+
     .slide {
       display: inline-block;
       scroll-snap-align: center;
@@ -39,20 +61,27 @@
       text-align: center;
       padding: 1em;
     }
+    .slide-title {
+      font-size: 4.5vw;
+      color: #000;
+      margin-bottom: 0.5em;
+      text-align: center;
+    }
     .slide img {
       width: 100%;
       border-radius: 8px;
     }
     .slide button {
-      margin-top: 1em;
+      display: block;
+      margin: 1em auto 0;
       background-color: #800014;
       color: white;
       padding: 0.5em 1em;
       border: none;
       border-radius: 5px;
       font-size: 4vw;
+      cursor: pointer;
     }
-    /* Modal */
     .modal {
       display: none;
       position: fixed;
@@ -82,60 +111,211 @@
 </head>
 <body>
 
-<h1>Vidrieras Flamencas</h1>
-<audio controls>
-  <source src="vidrieras.mp3" type="audio/mpeg">
-  Tu navegador no soporta audio.
-</audio>
+  <h1>Flemish stained-glass windows</h1>
+  <audio controls>
+    <source src="vidrieras-eng.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio.
+  </audio>
 
-<div class="slider-container">
-  <div class="slide">
-    <img src="lado-norte/vidriera1.jpg" alt="Vidriera 1">
-    <button onclick="openModal(1)">+ Más información</button>
+  <!-- LADO NORTE -->
+  <div class="section-header">NORTH SIDE</div>
+  <button class="toggle-btn" onclick="toggleSlider('norte')">VIEW STAINED GLASS</button>
+  <div id="slider-norte" class="slider-container">
+    <div class="slide">
+      <div class="slide-title">The crucifixion</div>
+      <img src="lado-norte/crucifixion.jpg" alt="Vidriera 1">
+      <button onclick="openModal(1)">+ more info</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">The Way to Calvary</div>
+      <img src="lado-norte/camino-calvario.jpg" alt="Vidriera 2">
+      <button onclick="openModal(2)">+ more info</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">The Crowning with Thorns</div>
+      <img src="lado-norte/coronacion-espinas.jpg" alt="Vidriera 3">
+      <button onclick="openModal(3)">+ more info</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">The Flagellation</div>
+      <img src="lado-norte/flagelacion.jpg" alt="Vidriera 4">
+      <button onclick="openModal(4)">+ more info</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">The Agony in the Garden</div>
+      <img src="lado-norte/oracion-huerto.jpg" alt="Vidriera 5">
+      <button onclick="openModal(5)">+ more info</button>
+    </div>
   </div>
-  <div class="slide">
-    <img src="lado-norte/vidriera2.jpg" alt="Vidriera 2">
-    <button onclick="openModal(2)">+ Más información</button>
-  </div>
-  <div class="slide">
-    <img src="lado-norte/vidriera3.jpg" alt="Vidriera 3">
-    <button onclick="openModal(3)">+ Más información</button>
-  </div>
-</div>
 
-<!-- Modales -->
-<div id="modal1" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal(1)">&times;</span>
-    <h2>Vidriera 1: La Anunciación</h2>
-    <p>Representación de la Anunciación. Taller flamenco, circa 1480.</p>
+  <!-- LADO SUR -->
+  <div class="section-header">SOUTH SIDE</div>
+  <button class="toggle-btn" onclick="toggleSlider('sur')">VIEW STAINED GLASS</button>
+  <div id="slider-sur" class="slider-container">
+    <div class="slide">
+      <div class="slide-title">The Descent from the Cross</div>
+      <img src="lado-sur/descendimiento.jpg" alt="Vidriera 6">
+      <button onclick="openModal(6)">+ more info</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">The Resurrection</div>
+      <img src="lado-sur/resurreccion.jpg" alt="Vidriera 7">
+      <button onclick="openModal(7)">+ more info</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">The Ascension</div>
+      <img src="lado-sur/ascension.jpg" alt="Vidriera 8">
+      <button onclick="openModal(8)">+ more info</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">Pentecost</div>
+      <img src="lado-sur/penstecostes.jpg" alt="Vidriera 9">
+      <button onclick="openModal(9)">+ more info</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">The Last Judgment</div>
+      <img src="lado-sur/juicio-final.jpg" alt="Vidriera 10">
+      <button onclick="openModal(10)">+ more info</button>
+    </div>
   </div>
-</div>
 
-<div id="modal2" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal(2)">&times;</span>
-    <h2>Vidriera 2: La Visitación</h2>
-    <p>Escena de la Visitación con ricos detalles florales y ropajes góticos.</p>
+  <!-- ÁBSIDE -->
+  <div class="section-header">APSE</div>
+  <button class="toggle-btn" onclick="toggleSlider('abside')">VIEW STAINED GLASS</button>
+  <div id="slider-abside" class="slider-container">
+    <div class="slide">
+      <div class="slide-title">The Coronation of the Virgin</div>
+      <img src="abside/coronacion-virgen.jpg" alt="Vidriera 11">
+      <button onclick="openModal(11)">+ more info</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">The Adoration of the Magi</div>
+      <img src="abside/adoracion-magos.jpg" alt="Vidriera 12">
+      <button onclick="openModal(12)">+ more info</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">The Presentation in the Temple</div>
+      <img src="abside/presentacion-templo.jpg" alt="Vidriera 13">
+      <button onclick="openModal(13)">+ more info</button>
+    </div>
   </div>
-</div>
 
-<div id="modal3" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal(3)">&times;</span>
-    <h2>Vidriera 3: La Natividad</h2>
-    <p>Detalle de la Natividad con ángeles músicos. Taller flamenco.</p>
+  <!-- MODALES LADO NORTE -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(1)">&times;</span>
+      <h2>The crucifixion</h2>
+      <p>The cross bearing the lifeless Christ occupies the center of the window, flanked by the good and the bad thief on their crosses. Above, the dove of the Holy Spirit confirms Him as the Son of God. At the base, Mary Magdalene clings to the wood, weeping. To the left, the Virgin Mary is comforted by John, the beloved disciple; behind them, Longinus the Centurion clad in yellow prepares to pierce Christ’s side. On the right, Joseph of Arimathea and Nicodemus stand beside Pilate, who holds the inscription “Jesus of Nazareth, King of the Jews.” The skull in the lower central panel symbolizes both Golgotha (“skull” in Hebrew) and Adam’s bones—humanity’s original sin redeemed by Christ’s sacrifice.</p>
+    </div>
   </div>
-</div>
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(2)">&times;</span>
+      <h2>The Way to Calvary</h2>
+      <p>Christ, clad in a blue robe, carries the cross and fills the central panel. Behind Him on the left, a jeering crowd follows along the road to Calvary. On the right, the Virgin Mary, John, and Mary Magdalene accompany Jesus in His final steps, joined by Veronica holding the Holy Face—the cloth that caught His sweat and bore His image. In the upper right quadrant, the next moment is shown: after being stripped of His tunic, Christ is nailed to the Cross.</p>
+    </div>
+  </div>
+  <div id="modal3" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(3)">&times;</span>
+      <h2>The Crowning with Thorns</h2>
+      <p>According to the Gospels, after the scourging they stripped Christ’s clothes, clothed Him in purple, and mockingly placed a crown of thorns upon His head while shouting “Hail, King of the Jews” (John 19:2). This is the central theme of the scene: soldiers press the thorns into Christ’s brow. Two smaller scenes appear above: on the left, the Ecce Homo (Christ presented to the people); on the right, Pilate accompanied by his wife, who warned him in a dream of Jesus’ innocence.</p>
+    </div>
+  </div>
+  <div id="modal4" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(4)">&times;</span>
+      <h2>The Flagellation</h2>
+      <p>The foreground shows Christ bound to a column, His hands tied behind Him as two men lash Him with whips. To the right stands Pontius Pilate, beside him a red-clad figure some identify as Herod. Above, hidden behind the column, is the earlier trial before Pilate, which chronologically precedes the scourging.</p>
+    </div>
+  </div>
+  <div id="modal5" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(5)">&times;</span>
+      <h2>The Agony in the Garden</h2>
+      <p>Despite the title, two scenes unfold. First, Christ kneels in prayer in the Garden of Olives, aware that He must drink the cup of His Passion (depicted above). Nearby, His closest disciples—Peter, James, and John—sleep. Then, in the upper left, Judas’ kiss of betrayal as he hands Jesus over to the Jewish authorities.</p>
+    </div>
+  </div>
 
-<script>
-  function openModal(id) {
-    document.getElementById('modal' + id).style.display = 'block';
-  }
-  function closeModal(id) {
-    document.getElementById('modal' + id).style.display = 'none';
-  }
-</script>
+  <!-- MODALES LADO SUR -->
+  <div id="modal6" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(6)">&times;</span>
+      <h2>The Descent from the Cross</h2>
+      <p>The dead Christ is taken down and handed to His mother. Mary Magdalene and Mary of Cleophas bring oils and spices to embalm His body, while Nicodemus and Joseph of Arimathea aid in lowering Him, flanked by John. The compassion in the faces reflects the ideals of Flemish devotional art.</p>
+    </div>
+  </div>
+  <div id="modal7" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(7)">&times;</span>
+      <h2>The Resurrection</h2>
+      <p>The Risen Christ stands on the shattered tomb that once held Him. His red robe and the bannered cross in His hand symbolize His victory over death. At the tomb’s base, the sleeping guards remain oblivious; in the upper right, the three Marys arrive to find the stone rolled away and Christ risen.</p>
+    </div>
+  </div>
+  <div id="modal8" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(8)">&times;</span>
+      <h2>The Ascension of the Lord</h2>
+      <p>The window depicts the Gospel account of Christ blessing His disciples and ascending to heaven. Only His feet remain visible as He rises, footprints still touching the rock. Below, the Virgin and the apostles look on in prayerful awe—Peter on the right as the elder, John on the left as the youngest.</p>
+    </div>
+  </div>
+  <div id="modal9" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(9)">&times;</span>
+      <h2>Pentecost</h2>
+      <p>After the Ascension, Christ sent the Holy Spirit upon the disciples as a dove and tongues of fire. Mary, at the center, appears in prayer with a book on her lap. John is identified by the scroll at the edge of his cloak. All the disciples bear halos, signifying their sanctity.</p>
+    </div>
+  </div>
+  <div id="modal10" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(10)">&times;</span>
+      <h2>The Last Judgment</h2>
+      <p>The final scene portrays the vision from Revelation: the Son of Man appears among the clouds in great power and glory, seated with His right hand raised to judge. John the Baptist and the Virgin Mary kneel in intercession. A host of angels blow their trumpets, and the dead rise from their tombs as shrouds.</p>
+    </div>
+  </div>
+
+  <!-- MODALES ÁBSIDE -->
+  <div id="modal11" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(11)">&times;</span>
+      <h2>The Coronation of the Virgin</h2>
+      <p>Mary is crowned by the Holy Trinity: on the left, God the Son with the Crown of Thorns and bare torso; on the right, God the Father with beard and red mantle, holding the orb of the world. Angels lift her skyward, foreshadowing the Assumption proclaimed in 1950.</p>
+    </div>
+  </div>
+  <div id="modal12" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(12)">&times;</span>
+      <h2>The Adoration of the Magi</h2>
+      <p>After Christ’s birth, the Magi from the East come to adore Him (Matthew 2:1–12). In the center, the Virgin holds the Child in a manger. Angels hold a decorative banner, while an ox and an ass flank the Nativity scene.</p>
+    </div>
+  </div>
+  <div id="modal13" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(13)">&times;</span>
+      <h2>The Presentation in the Temple</h2>
+      <p>Following Luke 2:22–40, the Virgin presents her son Jesus in the Temple, where Simeon holds Him. Joseph stands at the center offering three doves as a sacrificial gift. The meticulous Flemish detail is visible in the small dog at the lower panel and the ornate temple architecture above.</p>
+    </div>
+  </div>
+
+  <script>
+    function toggleSlider(id) {
+      const slider = document.getElementById("slider-" + id);
+      const btn = event.target;
+      if (slider.style.display === "block") {
+        slider.style.display = "none";
+        btn.textContent = "VIEW STAINED GLASS";
+      } else {
+        slider.style.display = "block";
+        btn.textContent = "HIDE";
+      }
+    }
+    function openModal(id) {
+      document.getElementById("modal" + id).style.display = "block";
+    }
+    function closeModal(id) {
+      document.getElementById("modal" + id).style.display = "none";
+    }
+  </script>
 
 </body>
 </html>
