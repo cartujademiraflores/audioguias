@@ -1,18 +1,15 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Vidrieras Flamencas - Slider</title>
+  <title>Vitraux flamands</title>
   <style>
     body {
       font-family: sans-serif;
-      background-color: #f0e3cd;
-      color: #4b3b28;
       margin: 0;
-      padding: 5vw;
-      text-align: center;
+      padding: 2vh 4vw;
+      background: #f0e3cd;
     }
     h1 {
       text-align: center;
@@ -22,11 +19,36 @@
       width: 100%;
       margin: 2vh 0;
     }
+    .section-header {
+      background-color: #80001300;
+      color: rgb(0, 0, 0);
+      text-align: center;
+      padding: 1em;
+      font-size: 5vw;
+      font-weight: bold;
+      margin-top: 2vh;
+    }
+    .toggle-btn {
+      display: block;
+      margin: 1vh auto;
+      background-color: #800014;
+      color: white;
+      border: none;
+      padding: 0.6em 1.2em;
+      font-size: 4vw;
+      border-radius: 5px;
+      cursor: pointer;
+    }
     .slider-container {
+      display: none;
       overflow-x: auto;
       white-space: nowrap;
       scroll-snap-type: x mandatory;
+      margin-top: 2vh;
     }
+    .slider-container::-webkit-scrollbar { display: none; }
+    .slider-container { -ms-overflow-style: none; scrollbar-width: none; }
+
     .slide {
       display: inline-block;
       scroll-snap-align: center;
@@ -39,20 +61,27 @@
       text-align: center;
       padding: 1em;
     }
+    .slide-title {
+      font-size: 4.5vw;
+      color: #000;
+      margin-bottom: 0.5em;
+      text-align: center;
+    }
     .slide img {
       width: 100%;
       border-radius: 8px;
     }
     .slide button {
-      margin-top: 1em;
+      display: block;
+      margin: 1em auto 0;
       background-color: #800014;
       color: white;
       padding: 0.5em 1em;
       border: none;
       border-radius: 5px;
       font-size: 4vw;
+      cursor: pointer;
     }
-    /* Modal */
     .modal {
       display: none;
       position: fixed;
@@ -82,60 +111,211 @@
 </head>
 <body>
 
-<h1>Vidrieras Flamencas</h1>
-<audio controls>
-  <source src="vidrieras.mp3" type="audio/mpeg">
-  Tu navegador no soporta audio.
-</audio>
+  <h1>Vitraux flamands</h1>
+  <audio controls>
+    <source src="vidrieras-fra.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio.
+  </audio>
 
-<div class="slider-container">
-  <div class="slide">
-    <img src="lado-norte/vidriera1.jpg" alt="Vidriera 1">
-    <button onclick="openModal(1)">+ Más información</button>
+  <!-- LADO NORTE -->
+  <div class="section-header">COTE NORD</div>
+  <button class="toggle-btn" onclick="toggleSlider('norte')">VOIR LES VITRAUX</button>
+  <div id="slider-norte" class="slider-container">
+    <div class="slide">
+      <div class="slide-title">La crucifixion</div>
+      <img src="lado-norte/crucifixion.jpg" alt="Vidriera 1">
+      <button onclick="openModal(1)">+ Plus d’info</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">Le chemin du Calvaire</div>
+      <img src="lado-norte/camino-calvario.jpg" alt="Vidriera 2">
+      <button onclick="openModal(2)">+ Plus d’info</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">Le couronnement d’épines</div>
+      <img src="lado-norte/coronacion-espinas.jpg" alt="Vidriera 3">
+      <button onclick="openModal(3)">+ Plus d’info</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">La flagellation</div>
+      <img src="lado-norte/flagelacion.jpg" alt="Vidriera 4">
+      <button onclick="openModal(4)">+ Plus d’info</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">L’agonie au Jardin</div>
+      <img src="lado-norte/oracion-huerto.jpg" alt="Vidriera 5">
+      <button onclick="openModal(5)">+ Plus d’info</button>
+    </div>
   </div>
-  <div class="slide">
-    <img src="lado-norte/vidriera2.jpg" alt="Vidriera 2">
-    <button onclick="openModal(2)">+ Más información</button>
-  </div>
-  <div class="slide">
-    <img src="lado-norte/vidriera3.jpg" alt="Vidriera 3">
-    <button onclick="openModal(3)">+ Más información</button>
-  </div>
-</div>
 
-<!-- Modales -->
-<div id="modal1" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal(1)">&times;</span>
-    <h2>Vidriera 1: La Anunciación</h2>
-    <p>Representación de la Anunciación. Taller flamenco, circa 1480.</p>
+  <!-- LADO SUR -->
+  <div class="section-header">COTÉ SUD</div>
+  <button class="toggle-btn" onclick="toggleSlider('sur')">VOIR LES VITRAUX</button>
+  <div id="slider-sur" class="slider-container">
+    <div class="slide">
+      <div class="slide-title">La Descente de Croix</div>
+      <img src="lado-sur/descendimiento.jpg" alt="Vidriera 6">
+      <button onclick="openModal(6)">+ Plus d’info</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">La Résurrection du Seigneur</div>
+      <img src="lado-sur/resurreccion.jpg" alt="Vidriera 7">
+      <button onclick="openModal(7)">+ Plus d’info</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">L’Ascension du Seigneur</div>
+      <img src="lado-sur/ascension.jpg" alt="Vidriera 8">
+      <button onclick="openModal(8)">+ Plus d’info</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">La Pentecôte</div>
+      <img src="lado-sur/penstecostes.jpg" alt="Vidriera 9">
+      <button onclick="openModal(9)">+ Plus d’info</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">Le Jugement dernier</div>
+      <img src="lado-sur/juicio-final.jpg" alt="Vidriera 10">
+      <button onclick="openModal(10)">+ Plus d’info</button>
+    </div>
   </div>
-</div>
 
-<div id="modal2" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal(2)">&times;</span>
-    <h2>Vidriera 2: La Visitación</h2>
-    <p>Escena de la Visitación con ricos detalles florales y ropajes góticos.</p>
+  <!-- ÁBSIDE -->
+  <div class="section-header">ABSIDE</div>
+  <button class="toggle-btn" onclick="toggleSlider('abside')">VOIR LES VITRAUX</button>
+  <div id="slider-abside" class="slider-container">
+    <div class="slide">
+      <div class="slide-title">Le couronnement de la Vierge</div>
+      <img src="abside/coronacion-virgen.jpg" alt="Vidriera 11">
+      <button onclick="openModal(11)">+ Plus d’info</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">L’adoration des Mages</div>
+      <img src="abside/adoracion-magos.jpg" alt="Vidriera 12">
+      <button onclick="openModal(12)">+ Plus d’info</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">La Présentation au Temple</div>
+      <img src="abside/presentacion-templo.jpg" alt="Vidriera 13">
+      <button onclick="openModal(13)">+ Plus d’info</button>
+    </div>
   </div>
-</div>
 
-<div id="modal3" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal(3)">&times;</span>
-    <h2>Vidriera 3: La Natividad</h2>
-    <p>Detalle de la Natividad con ángeles músicos. Taller flamenco.</p>
+  <!-- MODALES LADO NORTE -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(1)">&times;</span>
+      <h2>La crucifixion</h2>
+      <p>La croix portant le Christ mort occupe le centre du vitrail, flanquée à gauche et à droite des bon et mauvais larrons. Au sommet, la colombe du Saint-Esprit confirme qu’Il est le Fils de Dieu. À la base, Marie-Madeleine s’accroche au bois en larmes. Sur la gauche, la Vierge Marie est consolée par Jean, le disciple bien-aimé; derrière eux, le centurion Longin, vêtu de jaune, se prépare à percer le flanc du Christ. Sur la droite, Joseph d’Arimathie et Nicodème assistent Pilate, qui maintient l’inscription « Jésus de Nazareth, roi des Juifs ». Le crâne, dans la partie inférieure centrale, évoque le Golgotha (« crâne » en hébreu) et les os d’Adam, rappelant que la mort du premier homme par le péché originel est rachetée en ce moment par le sacrifice du Christ.</p>
+    </div>
   </div>
-</div>
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(2)">&times;</span>
+      <h2>Le chemin du Calvaire</h2>
+      <p>Le Christ, portant la croix en robe bleue, remplit le panneau central. Derrière Lui, à gauche, la foule chemine vers le Calvaire. À droite, la Vierge Marie, Jean et Marie-Madeleine accompagnent Jésus dans Ses derniers pas, rejoints par Véronique portant la Sainte-Face — le linge qui recueillit Son sueur et conserva Son image. Dans le quart supérieur droit, la scène suivante montre le dépouillement et le clouage de Jésus sur la croix.</p>
+    </div>
+  </div>
+  <div id="modal3" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(3)">&times;</span>
+      <h2>Le couronnement d’épines</h2>
+      <p>D’après les Évangiles, après la flagellation, on dévêtit le Christ, on le revêtit d’un manteau pourpre et on lui posa une couronne d’épines en se moquant de Lui, en criant « Salut, roi des Juifs » (Jn 19, 2). La scène principale montre les soldats enfonçant les épines dans Sa tête. Deux scènes secondaires, en haut, peuvent passer inaperçues : à gauche l’Ecce Homo (présentation de Jésus au peuple), à droite Pilate et son épouse, à qui un rêve révéla l’innocence de Jésus.</p>
+    </div>
+  </div>
+  <div id="modal4" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(4)">&times;</span>
+      <h2>La flagellation</h2>
+      <p>La scène éponyme dépeint Jésus lié à une colonne, les mains dans le dos, fouetté par deux hommes. Devant et à droite, Pilate observe la punition, accompagné d’une figure en rouge identifiée parfois comme Hérode. En arrière-plan, dissimulée par la colonne, apparaît la comparution de Jésus devant Pilate, antérieure chronologiquement à la flagellation.</p>
+    </div>
+  </div>
+  <div id="modal5" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(5)">&times;</span>
+      <h2>L’agonie au Jardin</h2>
+      <p>Malgré son titre, le vitrail combine deux moments successifs : d’abord, Jésus priant à genoux dans le jardin des Oliviers, conscient qu’Il doit boire le calice de la Passion. Les disciples Pierre, Jacques et Jean, épuisés, s’endorment à proximité. Puis, dans le coin supérieur gauche, l’acte de trahison : Judas embrasse Jésus pour Le livrer aux autorités.</p>
+    </div>
+  </div>
 
-<script>
-  function openModal(id) {
-    document.getElementById('modal' + id).style.display = 'block';
-  }
-  function closeModal(id) {
-    document.getElementById('modal' + id).style.display = 'none';
-  }
-</script>
+  <!-- MODALES LADO SUR -->
+  <div id="modal6" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(6)">&times;</span>
+      <h2>La Descente de Croix</h2>
+      <p>Le corps sans vie de Jésus est descendu de la croix et remis à Sa mère. Marie-Madeleine et Marie de Cléophas apportent huiles et parfums pour l’embaumement, tandis que Nicodème et Joseph d’Arimathie aident à déposer le corps, flanqués par Jean. La compassion et l’expression des visages reflètent l’idéal de la dévotion flamande.</p>
+    </div>
+  </div>
+  <div id="modal7" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(7)">&times;</span>
+      <h2>La Résurrection du Seigneur</h2>
+      <p>Le Christ ressuscité proclame Sa victoire sur la mort debout sur le tombeau brisé. Son manteau rouge et la croix-étendard qu’Il porte symbolisent ce triomphe. Aux pieds du tombeau, les gardes dorment; dans le quart supérieur droit, les trois Marie découvrent la tombe vide et contemplent l’événement.</p>
+    </div>
+  </div>
+  <div id="modal8" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(8)">&times;</span>
+      <h2>L’Ascension du Seigneur</h2>
+      <p>Le vitrail illustre l’Ascension : après avoir béni Ses disciples, Jésus s’élève vers le ciel. Seuls Ses pieds demeurent visibles, empreintes encore appuyées sur la roche. En bas, la Vierge et les apôtres regardent, émerveillés et en prière ; Pierre à droite comme le plus âgé, Jean à gauche comme le plus jeune.</p>
+    </div>
+  </div>
+  <div id="modal9" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(9)">&times;</span>
+      <h2>La Pentecôte</h2>
+      <p>Après l’Ascension, le Christ envoie l’Esprit Saint sous forme de colombe et de langues de feu. Marie, au centre, prie avec un livre ouvert sur ses genoux. Jean se reconnaît à la banderole sur son manteau. Tous les apôtres portent un nimbe, signe de sainteté.</p>
+    </div>
+  </div>
+  <div id="modal10" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(10)">&times;</span>
+      <h2>Le Jugement dernier</h2>
+      <p>La dernière scène s’inspire de l’Apocalypse : le Fils de l’Homme apparaît parmi les nuées, main droite levée pour juger le monde. Saint Jean-Baptiste et la Vierge intercèdent à genoux. Des anges sonnent de la trompette, et les morts se relèvent de leurs sépulcres, emportés par le souffle divin.</p>
+    </div>
+  </div>
+
+  <!-- MODALES ÁBSIDE -->
+  <div id="modal11" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(11)">&times;</span>
+      <h2>Le couronnement de la Vierge</h2>
+      <p>La Vierge est couronnée par la Trinité : à gauche Dieu le Fils (le Christ avec la couronne d’épines et le torse découvert), à droite Dieu le Père (barbu, vêtu de rouge, tenant l’orbe du monde). Des anges la soutiennent dans les airs, évoquant l’Assomption proclamée en 1950.</p>
+    </div>
+  </div>
+  <div id="modal12" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(12)">&times;</span>
+      <h2>L’adoration des Mages</h2>
+      <p>Après la Nativité, les Mages d’Orient viennent adorer l’Enfant Jésus (Mt 2, 1–12). Au centre, la Vierge tient l’Enfant dans la crèche. Des anges portent une banderole décorative, tandis que l’âne et le bœuf encadrent la scène, symboles d’humilité et de paix.</p>
+    </div>
+  </div>
+  <div id="modal13" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(13)">&times;</span>
+      <h2>La Présentation au Temple</h2>
+      <p>Selon Luc 2, 22–40, Marie présente Jésus au Temple où Syméon Le reçoit. Joseph offre trois colombes en offrande. Le souci du détail flamand se reflète dans le chien en bas du panneau et l’architecture liturgique richement ornée en haut.</p>
+    </div>
+  </div>
+
+  <script>
+    function toggleSlider(id) {
+      const slider = document.getElementById("slider-" + id);
+      const btn = event.target;
+      if (slider.style.display === "block") {
+        slider.style.display = "none";
+        btn.textContent = "VOIR LES VITRAUX";
+      } else {
+        slider.style.display = "block";
+        btn.textContent = "MASQUER";
+      }
+    }
+    function openModal(id) {
+      document.getElementById("modal" + id).style.display = "block";
+    }
+    function closeModal(id) {
+      document.getElementById("modal" + id).style.display = "none";
+    }
+  </script>
 
 </body>
 </html>
