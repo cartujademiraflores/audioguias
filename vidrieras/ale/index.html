@@ -1,18 +1,15 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Vidrieras Flamencas - Slider</title>
+  <title>Flämische Glasfenster</title>
   <style>
     body {
       font-family: sans-serif;
-      background-color: #f0e3cd;
-      color: #4b3b28;
       margin: 0;
-      padding: 5vw;
-      text-align: center;
+      padding: 2vh 4vw;
+      background: #f0e3cd;
     }
     h1 {
       text-align: center;
@@ -22,11 +19,36 @@
       width: 100%;
       margin: 2vh 0;
     }
+    .section-header {
+      background-color: #80001300;
+      color: rgb(0, 0, 0);
+      text-align: center;
+      padding: 1em;
+      font-size: 5vw;
+      font-weight: bold;
+      margin-top: 2vh;
+    }
+    .toggle-btn {
+      display: block;
+      margin: 1vh auto;
+      background-color: #800014;
+      color: white;
+      border: none;
+      padding: 0.6em 1.2em;
+      font-size: 4vw;
+      border-radius: 5px;
+      cursor: pointer;
+    }
     .slider-container {
+      display: none;
       overflow-x: auto;
       white-space: nowrap;
       scroll-snap-type: x mandatory;
+      margin-top: 2vh;
     }
+    .slider-container::-webkit-scrollbar { display: none; }
+    .slider-container { -ms-overflow-style: none; scrollbar-width: none; }
+
     .slide {
       display: inline-block;
       scroll-snap-align: center;
@@ -39,20 +61,27 @@
       text-align: center;
       padding: 1em;
     }
+    .slide-title {
+      font-size: 4.5vw;
+      color: #000;
+      margin-bottom: 0.5em;
+      text-align: center;
+    }
     .slide img {
       width: 100%;
       border-radius: 8px;
     }
     .slide button {
-      margin-top: 1em;
+      display: block;
+      margin: 1em auto 0;
       background-color: #800014;
       color: white;
       padding: 0.5em 1em;
       border: none;
       border-radius: 5px;
       font-size: 4vw;
+      cursor: pointer;
     }
-    /* Modal */
     .modal {
       display: none;
       position: fixed;
@@ -82,60 +111,211 @@
 </head>
 <body>
 
-<h1>Vidrieras Flamencas</h1>
-<audio controls>
-  <source src="vidrieras.mp3" type="audio/mpeg">
-  Tu navegador no soporta audio.
-</audio>
+  <h1>Flämische Glasfenster</h1>
+  <audio controls>
+    <source src="vidrieras-ale.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio.
+  </audio>
 
-<div class="slider-container">
-  <div class="slide">
-    <img src="lado-norte/vidriera1.jpg" alt="Vidriera 1">
-    <button onclick="openModal(1)">+ Más información</button>
+  <!-- LADO NORTE -->
+  <div class="section-header">NORDSEITE</div>
+  <button class="toggle-btn" onclick="toggleSlider('norte')">BUNTGLASFENSTER ANZEIGEN</button>
+  <div id="slider-norte" class="slider-container">
+    <div class="slide">
+      <div class="slide-title">Die Kreuzigung</div>
+      <img src="lado-norte/crucifixion.jpg" alt="Vidriera 1">
+      <button onclick="openModal(1)">+ Weitere Info</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">Der Weg nach Golgatha</div>
+      <img src="lado-norte/camino-calvario.jpg" alt="Vidriera 2">
+      <button onclick="openModal(2)">+ Weitere Info</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">Die Dornenkrönung</div>
+      <img src="lado-norte/coronacion-espinas.jpg" alt="Vidriera 3">
+      <button onclick="openModal(3)">+ Weitere Info</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">Die Geißelung</div>
+      <img src="lado-norte/flagelacion.jpg" alt="Vidriera 4">
+      <button onclick="openModal(4)">+ Weitere Info</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">Die Agonie im Garten</div>
+      <img src="lado-norte/oracion-huerto.jpg" alt="Vidriera 5">
+      <button onclick="openModal(5)">+ Weitere Info</button>
+    </div>
   </div>
-  <div class="slide">
-    <img src="lado-norte/vidriera2.jpg" alt="Vidriera 2">
-    <button onclick="openModal(2)">+ Más información</button>
-  </div>
-  <div class="slide">
-    <img src="lado-norte/vidriera3.jpg" alt="Vidriera 3">
-    <button onclick="openModal(3)">+ Más información</button>
-  </div>
-</div>
 
-<!-- Modales -->
-<div id="modal1" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal(1)">&times;</span>
-    <h2>Vidriera 1: La Anunciación</h2>
-    <p>Representación de la Anunciación. Taller flamenco, circa 1480.</p>
+  <!-- LADO SUR -->
+  <div class="section-header">SÜDSEITE</div>
+  <button class="toggle-btn" onclick="toggleSlider('sur')">BUNTGLASFENSTER ANZEIGEN</button>
+  <div id="slider-sur" class="slider-container">
+    <div class="slide">
+      <div class="slide-title">Die Kreuzabnahme</div>
+      <img src="lado-sur/descendimiento.jpg" alt="Vidriera 6">
+      <button onclick="openModal(6)">+ Weitere Info</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">Die Auferstehung des Herrn</div>
+      <img src="lado-sur/resurreccion.jpg" alt="Vidriera 7">
+      <button onclick="openModal(7)">+ Weitere Info</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">Die Himmelfahrt des Herrn</div>
+      <img src="lado-sur/ascension.jpg" alt="Vidriera 8">
+      <button onclick="openModal(8)">+ Weitere Info</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">Pfingsten</div>
+      <img src="lado-sur/penstecostes.jpg" alt="Vidriera 9">
+      <button onclick="openModal(9)">+ Weitere Info</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">Das Jüngste Gericht</div>
+      <img src="lado-sur/juicio-final.jpg" alt="Vidriera 10">
+      <button onclick="openModal(10)">+ Weitere Info</button>
+    </div>
   </div>
-</div>
 
-<div id="modal2" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal(2)">&times;</span>
-    <h2>Vidriera 2: La Visitación</h2>
-    <p>Escena de la Visitación con ricos detalles florales y ropajes góticos.</p>
+  <!-- ÁBSIDE -->
+  <div class="section-header">APSIS</div>
+  <button class="toggle-btn" onclick="toggleSlider('abside')">BUNTGLASFENSTER ANZEIGEN</button>
+  <div id="slider-abside" class="slider-container">
+    <div class="slide">
+      <div class="slide-title">Die Krönung Mariens</div>
+      <img src="abside/coronacion-virgen.jpg" alt="Vidriera 11">
+      <button onclick="openModal(11)">+ Weitere Info</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">Anbetung der Heiligen Drei Könige</div>
+      <img src="abside/adoracion-magos.jpg" alt="Vidriera 12">
+      <button onclick="openModal(12)">+ Weitere Info</button>
+    </div>
+    <div class="slide">
+      <div class="slide-title">Darstellung im Tempel</div>
+      <img src="abside/presentacion-templo.jpg" alt="Vidriera 13">
+      <button onclick="openModal(13)">+ Weitere Info</button>
+    </div>
   </div>
-</div>
 
-<div id="modal3" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal(3)">&times;</span>
-    <h2>Vidriera 3: La Natividad</h2>
-    <p>Detalle de la Natividad con ángeles músicos. Taller flamenco.</p>
+  <!-- MODALES LADO NORTE -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(1)">&times;</span>
+      <h2>Die Kreuzigung</h2>
+      <p>Das Kreuz mit dem toten Christus nimmt das Zentrum des Fensters ein, flankiert von Gutem und Bösem Dieb auf ihren Kreuzen. Über dem Kreuz bestätigt die Taube des Heiligen Geistes Seine göttliche Sohnschaft. Unten klammert sich Maria Magdalena weinend an das Holz. Links tröstet Johannes, der geliebte Jünger, die Jungfrau Maria. Hinter ihnen, in gelber Tunika, bereitet sich der Zenturio Longinus darauf vor, Christi Seite zu durchbohren. Rechts stehen Joseph von Arimathäa und Nikodemus neben Pilatus, der die Inschrift „Jesus von Nazareth, König der Juden“ hält. Der Schädel im unteren Mittelteil symbolisiert Golgatha („Schädel“ auf Hebräisch) und die Gebeine Adams, des ersten Menschen, dessen Tod durch die Erbsünde in diesem Moment durch Christi Opfer erlöst wird.</p>
+    </div>
   </div>
-</div>
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(2)">&times;</span>
+      <h2>Der Weg nach Golgatha</h2>
+      <p>Christus trägt in einer blauen Tunika das Kreuz durch das zentrale Feld des Fensters. Hinter Ihm auf der linken Seite folgt die wütende Menschenmenge dem Weg zum Kalvarienberg. Auf der rechten Seite begleiten die Jungfrau Maria, Johannes und Maria Magdalena Jesus auf Seinen letzten Schritten, begleitet von Veronika, die das Schweißtuch mit Seinem Abbild hält. Im oberen rechten Quadranten ist die unmittelbar folgende Szene dargestellt: Nachdem Christus Sein Gewand abgelegt wurde, wird Er ans Kreuz genagelt.</p>
+    </div>
+  </div>
+  <div id="modal3" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(3)">&times;</span>
+      <h2>Die Dornenkrönung</h2>
+      <p>Laut den Evangelien wurde Jesus nach der Geißelung entkleidet, mit einem purpurnen Mantel bekleidet und mit einer Dornenkrone verspottet, während die Soldaten „Sei gegrüßt, König der Juden“ riefen (Johannes 19, 2). Diese Hauptszene zeigt Soldaten, die die Dornen in Sein Haupt drücken. Oben sind zwei kleinere Szenen: links das Ecce Homo, rechts Pilatus mit seiner Frau, die Ihm im Traum von Jesu Unschuld berichtet hatte.</p>
+    </div>
+  </div>
+  <div id="modal4" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(4)">&times;</span>
+      <h2>Die Geißelung</h2>
+      <p>Im Vordergrund ist Jesus an eine Säule gefesselt, Seine Hände gebunden, während zwei Männer Ihn mit Peitschen auspeitschen. Vor Ihm und rechts steht Pontius Pilatus, begleitet von einer in Rot gekleideten Figur, die manche als Herodes identifizieren. Im oberen Mittelbereich, hinter der Säule verborgen, wird Seine frühere Verhandlung vor Pilatus dargestellt, die zeitlich der Geißelung vorausgeht.</p>
+    </div>
+  </div>
+  <div id="modal5" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(5)">&times;</span>
+      <h2>Die Agonie im Garten</h2>
+      <p>Trotz des Titels zeigt das Fenster zwei aufeinanderfolgende Momente. Zuerst betet Jesus kniend im Garten Gethsemane, im Bewusstsein des Kelches Seiner Passion. Seine engsten Jünger Petrus, Jakobus und Johannes schlafen erschöpft in der Nähe. Dann, im oberen linken Bereich, verrät Judas mit einem Kuss Jesus an die jüdischen Autoritäten.</p>
+    </div>
+  </div>
 
-<script>
-  function openModal(id) {
-    document.getElementById('modal' + id).style.display = 'block';
-  }
-  function closeModal(id) {
-    document.getElementById('modal' + id).style.display = 'none';
-  }
-</script>
+  <!-- MODALES LADO SUR -->
+  <div id="modal6" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(6)">&times;</span>
+      <h2>Die Kreuzabnahme</h2>
+      <p>Der tote Christus wird von der Kreuzesstange genommen und Seiner Mutter übergeben. Maria Magdalena und Maria von Kleophas bringen Öle und Salben zum Begräbnis, während Nikodemus und Joseph von Arimathäa beim Absenken Seines Leichnams helfen, flankiert von Johannes. Das Mitgefühl und die Mienen spiegeln den flämischen Andachtsstil wider.</p>
+    </div>
+  </div>
+  <div id="modal7" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(7)">&times;</span>
+      <h2>Die Auferstehung des Herrn</h2>
+      <p>Der auferstandene Christus steht triumphierend auf dem zerbrochenen Grab, gekleidet in ein rotes Gewand und mit einer Kreuzfahne in der Hand, Zeichen Seines Sieges über den Tod. Am Fuß des Grabes ruhen die schlafenden Wächter; im oberen rechten Bereich eilen die drei Marien herbei und entdecken das leere Grab.</p>
+    </div>
+  </div>
+  <div id="modal8" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(8)">&times;</span>
+      <h2>Die Himmelfahrt des Herrn</h2>
+      <p>Das Fenster zeigt die biblische Szene der Himmelfahrt: Nachdem Christus Seinen Jüngern erschienen war, segnete Er sie und fuhr gen Himmel auf. Nur Seine Füße bleiben sichtbar, während Er zwischen den Wolken entschwindet. Unten blicken die Jungfrau Maria und die Apostel ehrfürchtig und betend empor – Petrus rechts als Ältester, Johannes links als Jüngster.</p>
+    </div>
+  </div>
+  <div id="modal9" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(9)">&times;</span>
+      <h2>Pfingsten</h2>
+      <p>Nach der Himmelfahrt sandte Christus den Heiligen Geist in Gestalt einer Taube und in Flammenzungen herab. Maria kniet in der Mitte betend mit einem Buch auf dem Schoß; Johannes ist an der Schriftrolle an Seinem Mantelrand erkennbar. Alle Apostel tragen den Heiligenschein als Zeichen ihrer Heiligkeit.</p>
+    </div>
+  </div>
+  <div id="modal10" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(10)">&times;</span>
+      <h2>Das Jüngste Gericht</h2>
+      <p>Die Schlusszene zeigt die apokalyptische Vision: Der Sohn des Menschen erscheint in den Wolken in großer Kraft und Herrlichkeit, die rechte Hand zum Gericht erhoben. Johannes der Täufer und die Jungfrau Maria knien als Fürsprecher im Gebet. Engel blasen Trompeten, und die Toten erstehen aus ihren Gräbern.</p>
+    </div>
+  </div>
+
+  <!-- MODALES ÁBSIDE -->
+  <div id="modal11" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(11)">&times;</span>
+      <h2>Die Krönung Mariens</h2>
+      <p>Maria wird von der Heiligen Dreifaltigkeit gekrönt: links Gott der Sohn (Christus mit Dornenkrone und entblößtem Oberkörper), rechts Gott der Vater (barfüßig, in rotem Mantel, die Weltkugel haltend). Engel erheben sie gen Himmel, ein Vorbild der in 1950 proklamierten leiblichen Aufnahme.</p>
+    </div>
+  </div>
+  <div id="modal12" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(12)">&times;</span>
+      <h2>Anbetung der Heiligen Drei Könige</h2>
+      <p>Nach der Geburt Jesu kommen die Weisen aus dem Morgenland, um Ihn anzubeten (Matthäus 2, 1–12). Im Zentrum hält Maria das Kind in der Krippe. Engel tragen ein dekoratives Banner, während Esel und Ochse die Szene flankieren.</p>
+    </div>
+  </div>
+  <div id="modal13" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal(13)">&times;</span>
+      <h2>Darstellung im Tempel</h2>
+      <p>Nach Lukas 2, 22–40 führt Maria ihren Sohn in den Tempel, wo Simeon Ihn entgegennimmt. Joseph opfert drei Tauben als Opfergabe. Der flämische Detailreichtum zeigt sich im kleinen Hund im unteren Bereich und der reich verzierten Tempelarchitektur im oberen Feld.</p>
+    </div>
+  </div>
+
+  <script>
+    function toggleSlider(id) {
+      const slider = document.getElementById("slider-" + id);
+      const btn = event.target;
+      if (slider.style.display === "block") {
+        slider.style.display = "none";
+        btn.textContent = "BUNTGLASFENSTER ANZEIGEN";
+      } else {
+        slider.style.display = "block";
+        btn.textContent = "AUSBLENDEN";
+      }
+    }
+    function openModal(id) {
+      document.getElementById("modal" + id).style.display = "block";
+    }
+    function closeModal(id) {
+      document.getElementById("modal" + id).style.display = "none";
+    }
+  </script>
 
 </body>
 </html>
